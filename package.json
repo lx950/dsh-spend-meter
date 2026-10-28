@@ -1,6 +1,6 @@
 {
   "name": "dsh-spend-panel",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Live DeepSeek balance, per-turn charge and today spend in a draggable DSH panel — 平台账单计数器实测 + token 价目表兜底",
   "icon": "./icon.svg",
   "author": "dsh-spend-meter contributors",

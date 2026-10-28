@@ -6,6 +6,19 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.5] — 2026-10-29
+
+### Fixed
+
+- **"Today" now measures from the earliest money reading of the day.** The panel used
+  to prefer the charge counter; if the wallet balance had been read earlier that day
+  the counter's later start silently turned more of the day into a rate-card estimate.
+  The earliest book wins now, so the estimated window is as small as the data allows.
+- **The transcript reconciliation no longer drops the `after` half of the day.** The
+  ledger rebuilt each day from scratch and only carried `before` over, so `after` was
+  always 0, which silently disabled the calibration that compares the rate card with
+  the real invoice. Both halves survive now and the calibration actually learns.
+
 ## [0.4.4] — 2026-10-29
 
 ### Fixed
@@ -169,7 +182,8 @@ All notable changes to this project are documented here. The format follows
   last turn and today's spend, computed from DSH usage events and the DeepSeek rate card
   (peak/off-peak, cache hit/miss), with a local ledger in `$DSH_HOME/spend-meter/`.
 
-[Unreleased]: https://github.com/lx950/dsh-spend-meter/compare/v0.4.4...HEAD
+[Unreleased]: https://github.com/lx950/dsh-spend-meter/compare/v0.4.5...HEAD
+[0.4.5]: https://github.com/lx950/dsh-spend-meter/compare/v0.4.4...v0.4.5
 [0.4.4]: https://github.com/lx950/dsh-spend-meter/compare/v0.4.3...v0.4.4
 [0.4.3]: https://github.com/lx950/dsh-spend-meter/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/lx950/dsh-spend-meter/compare/v0.4.1...v0.4.2

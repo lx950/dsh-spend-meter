@@ -290,6 +290,19 @@ test('reconcileDay never lowers a day that live events already counted', () => {
   })
   assert.equal(grown.amount, 2.26)
   assert.equal(grown.tokens, 34_000_000)
+  // The split halves must survive: `after` is the sample that teaches the plugin
+  // how the rate card compares with the invoice, so losing it silently disables
+  // the calibration for the rest of the day.
+  const split = l.reconcileDay('2026-10-29', {
+    amount: 2.26,
+    tokens: 34_000_000,
+    turns: 2,
+    before: 1.5,
+    after: 0.76,
+    byModel: { 'deepseek-flash': { amount: 2.26, tokens: 34_000_000 } },
+  })
+  assert.equal(split.before, 1.5)
+  assert.equal(split.after, 0.76)
   l.dispose()
   fs.rmSync(dir, { recursive: true, force: true })
 })
