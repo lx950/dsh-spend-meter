@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: How the numbers are computed
+    url: https://github.com/lx950/dsh-spend-meter#how-the-number-is-computed
+    about: Measured (billing counter) vs estimated (rate card), peak/off-peak, backfill. Read this first if a number looks off.
+  - name: Diagnostics
+    url: https://github.com/lx950/dsh-spend-meter/blob/main/DEVELOPMENT.md#diagnostics
+    about: What each field of diag.json / health means, and the curl 401 (expected) note.

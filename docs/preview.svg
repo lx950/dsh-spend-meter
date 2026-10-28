@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="340" viewBox="0 0 640 340" role="img" aria-label="dsh-spend-meter panel preview">
+  <title>dsh-spend-meter — a draggable panel with balance, last turn and today's total</title>
+  <defs>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="170%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.14"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7f8fa"/>
+      <stop offset="1" stop-color="#eef0f4"/>
+    </linearGradient>
+    <style>
+      .ui { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+      .k { font-size: 12.5px; fill: #81858c; }
+      .v { font-size: 13px; fill: #0f1115; font-weight: 600; }
+      .vd { font-size: 13px; fill: #81858c; }
+    </style>
+  </defs>
+
+  <rect width="640" height="340" fill="url(#bg)"/>
+
+  <!-- faint conversation underneath, so the panel reads as floating -->
+  <g fill="#dfe3ea">
+    <rect x="72" y="58" width="300" height="10" rx="5"/>
+    <rect x="72" y="80" width="392" height="10" rx="5"/>
+    <rect x="72" y="102" width="248" height="10" rx="5"/>
+    <rect x="72" y="146" width="336" height="10" rx="5"/>
+    <rect x="72" y="168" width="284" height="10" rx="5"/>
+  </g>
+
+  <!-- composer -->
+  <g>
+    <rect x="64" y="252" width="512" height="56" rx="16" fill="#ffffff" stroke="#e3e6eb"/>
+    <rect x="84" y="276" width="200" height="9" rx="4.5" fill="#c9ced6"/>
+    <circle cx="548" cy="280" r="15" fill="#0f1115"/>
+    <path d="M542 280h11m-4.5-4.5 4.5 4.5-4.5 4.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- the panel -->
+  <g filter="url(#shadow)">
+    <rect x="356" y="96" width="252" height="196" rx="16" fill="#ffffff" stroke="rgba(0,0,0,0.10)"/>
+  </g>
+
+  <!-- header -->
+  <g class="ui">
+    <circle cx="374" cy="118" r="3.5" fill="#22c55e"/>
+    <text x="386" y="122.5" font-size="12.5" font-weight="600" fill="#61666b">会话花费</text>
+    <rect x="512" y="107" width="40" height="20" rx="4" fill="none" stroke="rgba(0,0,0,0.10)"/>
+    <text x="532" y="121.5" text-anchor="middle" font-size="11" fill="#81858c">谷时</text>
+    <text x="584" y="122" text-anchor="middle" font-size="11" fill="#81858c">▾</text>
+  </g>
+
+  <!-- rows -->
+  <g class="ui">
+    <text class="k" x="372" y="154">余额</text>
+    <text class="v" x="592" y="154" text-anchor="end">¥13.49</text>
+
+    <text class="k" x="372" y="178">上轮</text>
+    <text class="v" x="592" y="178" text-anchor="end">¥0.3853</text>
+
+    <text class="k" x="372" y="202">今日</text>
+    <text class="v" x="592" y="202" text-anchor="end">¥1.2041</text>
+
+    <text class="k" x="372" y="226">本轮</text>
+    <text class="vd" x="592" y="226" text-anchor="end">¥0.0412</text>
+
+    <text class="k" x="372" y="250">计费</text>
+    <text class="vd" x="592" y="250" text-anchor="end">谷时 → 09:00 转峰</text>
+  </g>
+
+  <line x1="372" y1="264" x2="592" y2="264" stroke="rgba(0,0,0,0.08)"/>
+  <text class="ui" x="372" y="281" font-size="11" fill="#adb2b8">按住标题栏可拖动 · 位置会记住</text>
+
+  <!-- collapsed pill: the other state -->
+  <g filter="url(#shadow)">
+    <rect x="96" y="196" width="212" height="34" rx="12" fill="#ffffff" stroke="rgba(0,0,0,0.10)"/>
+  </g>
+  <circle cx="114" cy="213" r="3.5" fill="#22c55e"/>
+  <text class="ui" x="126" y="217.5" font-size="12" fill="#61666b">¥13.49 · 上轮 <tspan font-weight="600" fill="#0f1115">¥0.3853</tspan> · 今日 ¥1.2041</text>
+</svg>

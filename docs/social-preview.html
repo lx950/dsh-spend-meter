@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>dsh-spend-meter — social preview</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #1b1b1c;
+    --layer: #232324;
+    --border: rgba(255, 255, 255, 0.12);
+    --text: #f9fafb;
+    --muted: #adb2b8;
+    --dim: #81858c;
+    --accent: rgb(86, 134, 254);
+    --green: rgb(34, 197, 94);
+    --amber: rgb(245, 158, 11);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1280px; height: 640px; overflow: hidden;
+    background:
+      radial-gradient(900px 420px at 78% 12%, rgba(86, 134, 254, 0.18), transparent 70%),
+      radial-gradient(700px 380px at 12% 92%, rgba(34, 197, 94, 0.1), transparent 70%),
+      var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    display: flex; align-items: center; gap: 64px; padding: 0 76px;
+  }
+  .left { width: 620px; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 22px;
+  }
+  .kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+  h1 { font-size: 62px; line-height: 1.02; margin: 0 0 20px; letter-spacing: -0.02em; font-weight: 650; }
+  h1 span { color: var(--accent); }
+  .sub { font-size: 21px; line-height: 1.45; color: var(--muted); margin: 0 0 28px; max-width: 560px; }
+  .sub b { color: var(--text); font-weight: 600; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip {
+    font-size: 13px; padding: 7px 13px; border-radius: 999px;
+    border: 1px solid var(--border); color: var(--muted); background: rgba(255, 255, 255, 0.03);
+  }
+  .panel {
+    width: 300px; border-radius: 16px; border: 1px solid var(--border);
+    background: rgba(27, 27, 28, 0.92);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px); overflow: hidden; transform: rotate(-1.2deg);
+  }
+  .bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 14px; border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .bar .title { font-size: 13px; font-weight: 600; letter-spacing: 0.01em; }
+  .bar .tier { font-size: 11px; color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.4); padding: 2px 7px; border-radius: 999px; }
+  .rows { padding: 6px 0 8px; }
+  .row { display: flex; align-items: baseline; justify-content: space-between; padding: 9px 14px; }
+  .row .k { font-size: 13px; color: var(--dim); }
+  .row .v { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .row.small .v { font-size: 15px; color: var(--muted); font-weight: 500; }
+  .row.hi .v { color: var(--green); }
+  .foot { padding: 10px 14px 13px; border-top: 1px solid var(--border); font-size: 11.5px; color: var(--dim); }
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="kicker"><span class="dot"></span>DeepSeek Harness plugin</div>
+    <h1>What did that<br /><span>turn</span> cost?</h1>
+    <p class="sub">
+      A draggable panel with live balance, the charge of the <b>last turn</b> and
+      <b>today's spend</b> — read from the billing counter to <b>1e-8 CNY</b>, not estimated
+      from token counts.
+    </p>
+    <div class="chips">
+      <span class="chip">no telemetry</span>
+      <span class="chip">light &amp; dark</span>
+      <span class="chip">MIT</span>
+      <span class="chip">npm · dsh plugin add</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="bar">
+      <span class="title">会话花费</span>
+      <span class="tier">谷时</span>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="k">余额</span><span class="v">¥7.9609</span></div>
+      <div class="row"><span class="k">上轮</span><span class="v">¥0.0759</span></div>
+      <div class="row hi"><span class="k">今日</span><span class="v">¥3.0671</span></div>
+      <div class="row small"><span class="k">本轮</span><span class="v">¥0.0412</span></div>
+    </div>
+    <div class="foot">平台账单计数器 · 09:00 转峰时</div>
+  </div>
+
+</body>
+</html>

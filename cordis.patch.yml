@@ -1,0 +1,11 @@
+# dsh-spend-panel — bundle patch layer.
+#
+# The row below loads this package's main entry (`lib/index.js`) as the host
+# half (a plain Cordis plugin). The `dsh.client` declaration in package.json
+# additionally makes the web app load `lib/client.js` as the browser half.
+#
+#   dsh plugin --profile <name> add dsh-spend-panel
+#   dsh plugin --profile <name> add link:/absolute/path/to/dsh-spend-panel
+- insert:
+    - id: dsh-spend-panel
+      name: dsh-spend-panel

@@ -1,0 +1,73 @@
+name: Bug report
+description: Something in the panel is wrong, missing, or shows a number you cannot explain.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Numbers on screen come from two places: the **billing counter** (measured) and the
+        **rate card** (estimated). Please say which one looked wrong, and attach the
+        diagnostic block — it answers most questions without another round trip.
+
+  - type: input
+    id: version
+    attributes:
+      label: dsh-spend-panel version
+      description: "`npm view dsh-spend-panel version`, or the `version` field of diag.json"
+      placeholder: "0.4.4"
+    validations:
+      required: true
+
+  - type: input
+    id: host
+    attributes:
+      label: DeepSeek Harness version
+      description: From the app's About window, or `dsh --version`
+      placeholder: "0.2.1-rc.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which number is wrong?
+      multiple: true
+      options:
+        - 余额 / Balance
+        - 上轮 / Last turn
+        - 今日 / Today
+        - 本轮 / Live turn
+        - 峰谷 / Peak tier or countdown
+        - Panel (position, drag, theme, layout)
+        - Install / plugin not loading
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What did you see, and what did you expect?
+      description: If you can, compare against the DeepSeek platform billing page for the same window.
+    validations:
+      required: true
+
+  - type: textarea
+    id: diag
+    attributes:
+      label: Diagnostics
+      description: |
+        Paste `$DSH_HOME/spend-meter/diag.json` (or at least `version`, `services`,
+        `balance`, `platform`, `transcript`, `lastSession`) and the panel's tooltip text.
+        Remove anything you consider private; no API keys or tokens appear in these files.
+      render: json
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before filing
+      options:
+        - label: I restarted the host after installing/updating (client bundles are composed at launch)
+        - label: I am on the latest version

@@ -1,0 +1,28 @@
+node_modules/
+.pnpm-store/
+*.log
+npm-debug.log*
+
+# Never commit credentials or local accounting state
+.credentials.yaml
+.credentials.*
+*.dshw-usage.json
+diag.json
+ledger.json
+ledger.json.*.tmp
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# Local scratch
+scratch/
+.tmp-*/
+*.tgz
+
+# Screenshot-tool scratch directories
+.shoot-tmp-*/
+*-report.json

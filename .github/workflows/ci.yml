@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        # Node 22 is the floor for the transcript backfill (node:zlib zstd).
+        # Older runtimes degrade gracefully, but the suite asserts the decoder,
+        # so a green run means "the whole feature works", not "it stayed alive".
+        node: [22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # No dependencies: every suite runs on node:test with stubs.
+      - name: Syntax check
+        run: |
+          for f in lib/*.js; do node --check "$f"; done
+          for f in test/*.mjs; do node --check "$f"; done
+
+      - name: Unit + integration suites
+        run: npm test
+        env:
+          # Keep the suites away from any real credential store or network.
+          DSH_HOME: ${{ github.workspace }}/.ci-home

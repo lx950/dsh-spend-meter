@@ -1,0 +1,89 @@
+{
+  "name": "dsh-spend-panel",
+  "version": "0.4.4",
+  "description": "Live DeepSeek balance, per-turn charge and today spend in a draggable DSH panel — 平台账单计数器实测 + token 价目表兜底",
+  "icon": "./icon.svg",
+  "author": "dsh-spend-meter contributors",
+  "type": "module",
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0-rc.2"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "lib/ledger.js",
+    "lib/pricing.js",
+    "lib/transcripts.js",
+    "lib/platform.js",
+    "lib/credentials.js",
+    "lib/attribution.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "DEVELOPMENT.md",
+    "docs/preview.svg",
+    "docs/social-preview.png",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "balance",
+    "cost",
+    "usage",
+    "token",
+    "status-bar"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lx950/dsh-spend-meter.git"
+  },
+  "homepage": "https://github.com/lx950/dsh-spend-meter",
+  "bugs": {
+    "url": "https://github.com/lx950/dsh-spend-meter/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-modules"
+      ],
+      "platform": "web"
+    },
+    "manifestVersion": 1
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-host-webserver": ">=0.2.0-rc.2",
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-host-webserver": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "test": "node test/self-check.mjs && node test/apply-smoke.mjs && node test/platform-e2e.mjs && node test/today-e2e.mjs && node test/session-id.mjs && node test/credentials-e2e.mjs",
+    "test:live": "node test/live-balance.mjs",
+    "test:live:platform": "node test/live-platform.mjs",
+    "test:preview": "node test/preview-panel.mjs"
+  }
+}
